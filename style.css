@@ -1,0 +1,399 @@
+@import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap");
+
+@font-face {
+  src: url(fonts/HARRYP__.TTF);
+  font-family: HarryP;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Homemade Apple", cursive;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  background-color: blanchedalmond;
+  cursor: url(logos/wand2.png), pointer;
+}
+
+/* header */
+
+header {
+  font-family: HarryP;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.sortingHat {
+  margin-left: 84rem;
+  width: 50px;
+  cursor: url(logos/wand2.png), pointer;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.sortingHat img {
+  max-width: 100%;
+}
+
+.sortingHat:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transition: ease-in-out 0.2s;
+}
+
+.headerImg img {
+  width: 150px;
+}
+
+.title h1 {
+  font-size: 2.5rem;
+}
+
+.title h2 {
+  font-size: 2rem;
+  margin-top: -1.5rem;
+}
+
+/* filter and sorting */
+
+#filterAndSorting {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  margin-top: 2rem;
+}
+
+#searchBar {
+  height: 25px;
+  width: 250px;
+  margin-left: 50px;
+  margin-top: 155px;
+  background-color: rgb(219, 178, 116);
+  font-family: "Homemade Apple", cursive;
+  border: 1px solid black;
+}
+
+.filterAndSortingOpts {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sortDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.sortByBtns {
+  margin-left: 8px;
+}
+
+button {
+  background-color: #9b5b23;
+  font-family: "Homemade Apple", cursive;
+  border-radius: 20%;
+  border: solid 1px black;
+  box-shadow: 5px 9px 10px -1px rgba(0, 0, 0, 0.23);
+  padding: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+button:hover {
+  background-color: #79481e;
+  cursor: url(logos/wand2.png), pointer;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+.sortByBtns button.sortBy {
+  text-decoration: underline;
+}
+
+.sortByBtns button.sortBy[data-sort-direction="asc"]::after {
+  content: " ↓";
+}
+
+.sortByBtns button.sortBy[data-sort-direction="desc"]::after {
+  content: " ↑";
+}
+
+/* student list */
+
+#studentInfoDisplay {
+  display: flex;
+  margin-top: 1rem;
+  background-image: url(logos/paper.webp);
+  background-repeat: no-repeat;
+  width: 1264px;
+  height: 60vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.displayContainer {
+  display: flex;
+  margin-top: -5rem;
+  height: 45vw;
+  width: 80%;
+}
+
+/* display info */
+.displayAbout {
+  width: 190px;
+  font-size: 18px;
+}
+
+.displayAbout div {
+  margin-top: 15px;
+}
+
+/* table - student list */
+.tablesContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  height: 45vw;
+  width: 850px;
+}
+
+.headingTable {
+  width: 70%;
+  border-collapse: separate;
+  margin-left: 11.5rem;
+}
+
+thead {
+  font-size: 20px;
+}
+
+th {
+  border-collapse: separate;
+}
+
+.studentList {
+  width: 900px;
+  overflow-y: scroll;
+}
+
+.studentTable {
+  width: 80%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 2px 7px 20px 0px rgba(0, 0, 0, 0.11);
+  transition: 0.2s ease-in-out;
+  cursor: url(logos/wand2.png), pointer;
+}
+
+td {
+  text-align: center;
+}
+
+tbody .studentPic {
+  width: 80px;
+  height: 80px;
+}
+
+tbody .studentPic img {
+  max-width: 100%;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+tbody .housePic {
+  width: 80px;
+  height: 80px;
+}
+
+tbody .housePic img {
+  max-width: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* expelled student */
+tbody tr.expelled {
+  background-color: #e04820;
+}
+
+/* student pop up */
+#studentPopup {
+  visibility: hidden;
+  position: fixed;
+  top: 87px;
+  background-color: #740001;
+  color: antiquewhite;
+  padding: 4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-left: 17.5rem;
+  width: 800px;
+  height: 550px;
+  border-radius: 8%;
+  box-shadow: -2px -2px 10px 6px rgba(0, 0, 0, 0.37);
+  border: solid 3px gold;
+  z-index: 1;
+}
+
+.close {
+  display: flex;
+  justify-content: right;
+  font-size: 3rem;
+  margin-top: -2.5rem;
+  margin-right: -2rem;
+  cursor: url(logos/wand2.png), pointer;
+}
+
+.close:hover {
+  color: grey;
+}
+
+.hide {
+  display: none;
+}
+
+.basicInfo {
+  display: flex;
+  gap: 3rem;
+  margin-top: -3rem;
+}
+
+.popupPhoto img {
+  height: 180px;
+}
+
+.popupName,
+.popupLastname {
+  font-size: 1.5rem;
+}
+
+.popupGender img {
+  height: 18px;
+}
+
+.popupBloodStatus {
+  font-size: 16px;
+}
+
+.popupHouse img {
+  height: 120px;
+  margin-left: 3rem;
+}
+
+.extraInfo {
+  display: flex;
+  margin-top: 1rem;
+  gap: 5.8rem;
+  margin-left: -1rem;
+}
+
+.popupGroups {
+  font-size: 1.1rem;
+}
+
+.groupsBtns {
+  margin-top: 1rem;
+}
+
+.prefectBtn {
+  font-size: 13px;
+}
+
+.memberBtn {
+  margin-left: 1rem;
+  font-size: 13px;
+}
+
+.expelDiv {
+  display: flex;
+  justify-content: end;
+  margin-top: 1.2rem;
+}
+
+.expelBtn {
+  background-color: black;
+  color: antiquewhite;
+}
+
+.expelBtn:hover {
+  background-color: #e04820;
+}
+
+.popupExpel {
+  color: #e04820;
+  font-size: 1.5rem;
+}
+
+/* Prefect dialog */
+#prefectDialog {
+  visibility: hidden;
+  position: fixed;
+  top: 87px;
+  background-color: #ca392f;
+  color: antiquewhite;
+  padding: 4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-left: 17.5rem;
+  width: 800px;
+  height: 550px;
+  border-radius: 8%;
+  box-shadow: -2px -2px 10px 6px rgba(0, 0, 0, 0.37);
+  border: solid 3px gold;
+  z-index: 3;
+}
+
+#prefectDialog button {
+  margin-left: 2rem;
+}
+
+/* animations */
+.shake {
+  animation-name: shake;
+  animation-duration: 0.1s;
+  animation-iteration-count: 8;
+  animation-direction: alternate;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+.hacked {
+  animation-name: hacked;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes hacked {
+  0% {
+    background-color: blanchedalmond;
+  }
+  100% {
+    background-color: #e04820;
+  }
+}
+
+/* footer */
+footer {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+footer a {
+  color: black;
+}

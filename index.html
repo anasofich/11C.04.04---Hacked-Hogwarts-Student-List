@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="logos/hogwarts.png" type="image/png" />
+    <title>Student List</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="sortingHat"><img src="logos/sorting-hat.png" alt="" /></div>
+      <div class="headerImg"><img src="logos/hogwarts.png" alt="" /></div>
+      <div class="title">
+        <div><h1>Hogwarts School of Witchcraft and Wizardry</h1></div>
+        <div><h2>Class of 1991</h2></div>
+      </div>
+    </header>
+
+    <main>
+      <section id="filterAndSorting">
+        <div class="searchBarDiv"><input type="text" id="searchBar" placeholder="Search student by name" /></div>
+
+        <div class="filterAndSortingOpts">
+          <div class="filterDiv">
+            <div>Filter by:</div>
+            <div class="filterByBtns">
+              <button class="filter" data-action="filter" data-filter="showAll">Show all</button>
+              <button class="filter" data-action="filter" data-filter="gryffindor">Gryffindor</button>
+              <button class="filter" data-action="filter" data-filter="slytherin">Slytherin</button>
+              <button class="filter" data-action="filter" data-filter="hufflepuff">Hufflepuff</button>
+              <button class="filter" data-action="filter" data-filter="ravenclaw">Ravenclaw</button>
+              <button class="filter" data-action="filter" data-filter="nonExpelled">Non-expelled</button>
+              <button class="filter" data-action="filter" data-filter="expelled">Expelled</button>
+              <button class="filter" data-action="filter" data-filter="pure">Pure-blood</button>
+              <button class="filter" data-action="filter" data-filter="half">Half-blood</button>
+              <button class="filter" data-action="filter" data-filter="muggle">Muggle-born</button>
+            </div>
+          </div>
+
+          <div class="sortDiv">
+            <div>Sort by:</div>
+            <div class="sortByBtns">
+              <button data-action="sort" data-sort-direction="asc" data-sort="firstName" class="firstNameBtn">First name</button>
+              <button data-action="sort" data-sort-direction="asc" data-sort="lastName" class="lastNameBtn">Last name</button>
+              <button data-action="sort" data-sort-direction="asc" data-sort="gender" class="genderBtn">Gender</button>
+              <button data-action="sort" data-sort-direction="asc" data-sort="house" class="houseBtn">House</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="studentInfoDisplay">
+        <div class="displayContainer">
+          <div class="displayAbout">
+            <div class="numberStudents">Number of enrolled students: <span></span></div>
+            <div class="studentsDisplayed">Students displayed: <span></span></div>
+            <div class="gryffindorDisplay">Gryffindor: <span></span></div>
+            <div class="slytherinDisplay">Slytherin: <span></span></div>
+            <div class="hufflepuffDisplay">Hufflepuff: <span></span></div>
+            <div class="ravenclawDisplay">Ravenclaw: <span></span></div>
+          </div>
+
+          <div class="tablesContainer">
+            <table class="headingTable">
+              <thead>
+                <tr>
+                  <th class="photohead"></th>
+                  <th>First name</th>
+                  <th>Last name</th>
+                  <th>Gender</th>
+                  <th>House</th>
+                  <th>Blood status</th>
+                </tr>
+              </thead>
+            </table>
+
+            <div class="studentList">
+              <table class="studentTable">
+                <tbody>
+                  <!-- <tr id="">
+                <td data-field="picture">
+                  <img src="" alt="" />
+                </td>
+                <td data-field="firstName">Harry</td>
+                <td data-field="lastName">Potter</td>
+                <td data-field="gender">Boy</td>
+                <td data-field="house">
+                  <img src="" alt="" />
+                </td>
+                <td data-field="bloodStatus">Pure-blood</td>
+              </tr> -->
+                </tbody>
+              </table>
+
+              <template class="studentTemplate">
+                <tr id="">
+                  <td data-field="picture" class="studentPic">
+                    <img src="" alt="" />
+                  </td>
+                  <td data-field="firstName"></td>
+                  <td data-field="lastName"></td>
+                  <td data-field="gender"></td>
+                  <td data-field="house" class="housePic">
+                    <img src="" alt="" />
+                  </td>
+                  <td data-field="bloodStatus"></td>
+                </tr>
+              </template>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="studentPopup">
+        <span class="close" onclick="closePopup()">&times;</span>
+
+        <div class="basicInfo">
+          <div class="popupPhoto">
+            <img src="" alt="" />
+          </div>
+          <div class="personalInfo">
+            <div class="popupName"><span class="popUpFirstname"></span><span class="popupNickname"></span><span class="popupMiddlename"></span></div>
+            <div class="popupLastname"></div>
+            <div class="popupGender"><img src="logos/boy.png" alt="gender" /></div>
+            <div class="popupBloodStatus"></div>
+          </div>
+        </div>
+
+        <div class="extraInfo">
+          <div class="popupHouse">
+            <img src="" alt="" />
+          </div>
+          <div class="popupGroups">
+            <div class="popupExpel">This student is currently expelled</div>
+            <div class="popupPrefect">Prefect: <span class="popupPrefectStatus">No</span></div>
+            <div class="popupMember hide">Member of the Inquisitorial Squad: <span class="popupMemberStatus">No</span></div>
+            <div class="groupsBtns">
+              <button class="prefectBtn">Add prefect position</button>
+              <button class="memberBtn hide">Add membership</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="expelDiv">
+          <button class="expelBtn">Expel student</button>
+        </div>
+      </section>
+
+      <section id="prefectDialog" class="">
+        <div class="dialogcontent">
+          <span class="close">&times;</span>
+          <h1>There can only be one prefect of each gender in each house!</h1>
+          <h2>Remove the other if you want to appoint a new one</h2>
+          <p><span class="otherStudent">Name</span><button data-action="removeOther">remove</button></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

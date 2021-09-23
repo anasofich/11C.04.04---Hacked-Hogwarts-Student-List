@@ -1,0 +1,116 @@
+//Prefect buttons
+
+  document.querySelector("#studentPopup .prefectBtn").addEventListener("click", prefectStatus);
+
+  function prefectStatus() {
+    console.log("prefectStatus()");
+    if (student.prefect === true) {
+      student.prefect = false;
+      document.querySelector(".popupPrefect .popupPrefectStatus").textContent = "No";
+      document.querySelector(".prefectBtn").textContent = "Add prefect position";
+    } else {
+      tryToMakeAPrefect(student);
+    }
+  }
+
+  if (student.prefect === true) {
+    document.querySelector(".popupPrefect .popupPrefectStatus").textContent = "Yes";
+    document.querySelector(".prefectBtn").textContent = "Remove prefect position";
+  } else {
+    document.querySelector(".popupPrefect .popupPrefectStatus").textContent = "No";
+    document.querySelector(".prefectBtn").textContent = "Add prefect position";
+  }
+
+
+  //Prefect function
+function tryToMakeAPrefect(selectedStudent) {
+  console.log("tryToMakeAPrefect()");
+  console.log(selectedStudent.prefect);
+  console.log(selectedStudent.firstName);
+  const prefects = allStudents.filter((student) => student.prefect);
+  console.log(prefects);
+
+  const filterPrefects = prefects.filter((student) => student.gender === selectedStudent.gender && student.house === selectedStudent.house);
+  const numberOfPrefectsInEachHouse = filterPrefects.length;
+  const sameGenderAndHouse = filterPrefects.shift();
+
+  //if there is another of the same gender and house
+  if (sameGenderAndHouse !== undefined) {
+    console.log("There can only be one prefect of each gender in each house!");
+    removeOther(sameGenderAndHouse);
+  } else {
+    makePrefect(selectedStudent);
+  }
+
+  function removeOther(sameGenderAndHouse) {
+    //ask the user to ignore or remove the other
+    const prefectDialog = document.querySelector("#prefectDialog");
+    prefectDialog.style.visibility = "visible";
+    document.querySelector("#prefectDialog .otherStudent").textContent = `${sameGenderAndHouse.firstName} ${sameGenderAndHouse.lastName}`;
+    document.querySelector("#prefectDialog .close").addEventListener("click", closeDialog);
+    document.querySelector("[data-action=removeOther]").addEventListener("click", clickRemoveOther);
+
+    //if ignore - do nothing...
+    function closeDialog() {
+      document.querySelector("#prefectDialog").style.visibility = "hidden";
+      document.querySelector("[data-action=removeOther]").removeEventListener("click", clickRemoveOther);
+    }
+
+    //if remove other:
+    function clickRemoveOther() {
+      console.log("clickRemovePrefect()");
+      removePrefect(sameGenderAndHouse);
+      makePrefect(selectedStudent);
+      buildList();
+      closeDialog();
+    }
+  }
+
+  function removePrefect(prefectStudent) {
+    console.log("removePrefect()");
+    prefectStudent.prefect = false;
+  }
+
+  function makePrefect(student) {
+    console.log("makePrefect()");
+    student.prefect = true;
+    document.querySelector(".popupPrefect .popupPrefectStatus").textContent = "Yes";
+    document.querySelector(".prefectBtn").textContent = "Remove prefect position";
+    console.log(selectedStudent.prefect);
+    console.log(prefects);
+  }
+}
+
+
+
+
+
+
+//Blood status functions
+function loadJSONFamilies() {
+  console.log("loadJSONFamilies()");
+  fetch("https://petlatkea.dk/2021/hogwarts/families.json")
+    .then((response) => response.json())
+    .then((jsonData) => {
+      // when loaded, prepare objects
+      prepareFamilies(jsonData);
+    });
+}
+
+function prepareFamilies(jsonData) {
+  let halfBloodArray = jsonData.half;
+  let pureBloodArray = jsonData.pure;
+
+  //Set blood status
+  allStudents.forEach((student) => {
+    if (halfBloodArray.includes(student.lastName)) {
+      student.bloodStatus = "Half-blood";
+    } else if (pureBloodArray.includes(student.lastName)) {
+      student.bloodStatus = "Pure-blood";
+    } else {
+      student.bloodStatus = "Muggle";
+    }
+  });
+
+  displayList(allFamilies);
+}
