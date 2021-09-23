@@ -472,8 +472,8 @@ function displayPopup(student) {
     document.querySelector(".popupMember").classList.remove("hide");
     document.querySelector(".memberBtn").classList.remove("hide");
   } else {
-    document.querySelector(".popupMember").style.display = "none";
-    document.querySelector(".memberBtn").style.display = "none";
+    document.querySelector(".popupMember").classList.add("hide");
+    document.querySelector(".memberBtn").classList.add("hide");
   }
 
   document.querySelector(".memberBtn").onclick = function () {
