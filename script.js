@@ -440,7 +440,7 @@ function displayPopup(student) {
 
   //Expell settings
   document.querySelector("#studentPopup .expelBtn").onclick = function () {
-    expellStudent(student);
+    expelStudent(student);
   };
 
   if (student.expelled === true) {
@@ -572,8 +572,8 @@ function checkPrefectStatus(selectedStudent) {
 }
 
 //Expelled function
-function expellStudent(selectedStudent) {
-  //console.log("expellStudent()");
+function expelStudent(selectedStudent) {
+  //console.log("expelStudent()");
   if (selectedStudent.hacker === true) {
     //alert("I can't be expelled, MUA HA HA HA!!");
     document.querySelector("#cantExpelDialog").style.visibility = "visible";
@@ -587,7 +587,7 @@ function expellStudent(selectedStudent) {
     selectedStudent.expelled = !selectedStudent.expelled;
     //console.log("changing expelled status");
   }
-  document.querySelector("#studentPopup .expelBtn").removeEventListener("click", expellStudent);
+  document.querySelector("#studentPopup .expelBtn").removeEventListener("click", expelStudent);
 
   buildList();
   closePopup();
