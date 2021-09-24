@@ -355,6 +355,30 @@ tbody tr.expelled {
   margin-left: 2rem;
 }
 
+/* can't be expelled dialog */
+#cantExpelDialog {
+  visibility: hidden;
+  position: fixed;
+  top: 87px;
+  background-color: #ca392f;
+  color: antiquewhite;
+  padding: 4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-left: 17.5rem;
+  width: 800px;
+  height: 550px;
+  border-radius: 8%;
+  box-shadow: -2px -2px 10px 6px rgba(0, 0, 0, 0.37);
+  border: solid 3px gold;
+  z-index: 3;
+  text-align: center;
+}
+
+#cantExpelDialog h1 {
+  margin-top: 7rem;
+}
+
 /* animations */
 .shake {
   animation-name: shake;

@@ -575,8 +575,14 @@ function checkPrefectStatus(selectedStudent) {
 function expellStudent(selectedStudent) {
   //console.log("expellStudent()");
   if (selectedStudent.hacker === true) {
-    alert("I can't be expelled, MUA HA HA HA!!");
-    //TODO - add a div for message
+    //alert("I can't be expelled, MUA HA HA HA!!");
+    document.querySelector("#cantExpelDialog").style.visibility = "visible";
+    document.querySelector("#cantExpelDialog .close").addEventListener("click", closeDialog);
+
+    function closeDialog() {
+      document.querySelector("#cantExpelDialog").style.visibility = "hidden";
+      document.querySelector("#cantExpelDialog .close").removeEventListener("click", closeDialog);
+    }
   } else {
     selectedStudent.expelled = !selectedStudent.expelled;
     //console.log("changing expelled status");
