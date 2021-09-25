@@ -642,14 +642,14 @@ function addInqSquadMembership(selectedStudent) {
 document.querySelector(".sortingHat").addEventListener("click", clickOnHat);
 
 function clickOnHat() {
-  console.log("clickOnHat()");
+  //console.log("clickOnHat()");
   document.querySelector("body").classList.add("shake");
   document.querySelector(".sortingHat").removeEventListener("click", clickOnHat);
   document.querySelector("body").addEventListener("animationend", hackTheSystem);
 }
 
 function hackTheSystem() {
-  console.log("hackTheSystem()");
+  console.log("system hacked");
   document.querySelector("body").classList.remove("shake");
   document.querySelector("body").classList.add("hacked");
 
@@ -668,7 +668,28 @@ function hackTheSystem() {
     hacker: true,
   };
 
+  messUpBloodStatus();
+
   allStudents.unshift(newStudent);
 
   buildList();
+}
+
+function messUpBloodStatus() {
+  allStudents.forEach((student) => {
+    if (student.bloodStatus === "Muggle-born") {
+      student.bloodStatus = "Pure-blood";
+    } else if (student.bloodStatus === "Half-blood") {
+      student.bloodStatus = "Pure-blood";
+    } else {
+      let bloodStatusNum = Math.floor(Math.random() * 3);
+      if (bloodStatusNum === 0) {
+        student.bloodStatus = "Pure-blood";
+      } else if (bloodStatusNum === 1) {
+        student.bloodStatus = "Half-blood";
+      } else {
+        student.bloodStatus = "Muggle-born";
+      }
+    }
+  });
 }
