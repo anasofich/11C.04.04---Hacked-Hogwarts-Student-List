@@ -37,6 +37,7 @@ function registerButtons() {
   document.querySelectorAll("[data-action='filter']").forEach((button) => button.addEventListener("click", selectFilter));
   document.querySelectorAll("[data-action='sort']").forEach((button) => button.addEventListener("click", selectSort));
   document.querySelector("#searchBar").addEventListener("keyup", selectSearch);
+  document.querySelector(".sortingHat").addEventListener("click", clickOnHat);
 }
 
 //Used before adding families.json, then had to change it to an async function for list to show up
@@ -639,8 +640,6 @@ function addInqSquadMembership(selectedStudent) {
 }
 
 //hackTheSystem() function - activated by clicking on sorting hat on the top right corner
-document.querySelector(".sortingHat").addEventListener("click", clickOnHat);
-
 function clickOnHat() {
   //console.log("clickOnHat()");
   document.querySelector("body").classList.add("shake");
